@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+
+    <title>v-for exercicio</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="puxarEndereco">Clique aqui para ver o endereço</button>
+      <div>
+          <ul>
+              <li v-for="lugar, chave in local">{{ chave }}: {{ lugar }}</li>
+          </ul>
+      </div>
+
+      <script>
+        const vm = new Vue({
+          el: "#app",
+          data: {
+            local: {},
+          },
+          methods: {
+            puxarEndereco() {
+              fetch("https://viacep.com.br/ws/03204010/json/")
+                .then((response) => response.json())
+                .then((result) => (this.local = result));
+            },
+          },
+        });
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+
+    <title>v-for exercicio2</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="puxarCursos">Puxar cursos</button>
+      <div v-for="curso in cursos">
+        <p>{{ curso.curso }}</p>
+        <ul>
+          <li v-for="aula in curso.aulas">
+            A aula {{ aula.nome }}, tem duração de: {{ aula.tempo }}
+          </li>
+        </ul>
+      </div>
+      <script>
+        const vm = new Vue({
+          el: "#app",
+          data: {
+            cursos: {},
+          },
+          methods: {
+            puxarCursos() {
+              fetch("../v-for/cursos.json")
+                .then((response) => response.json())
+                .then((result) => (this.cursos = result));
+            },
+          },
+        });
+      </script>
+    </div>
+  </body>
+</html>

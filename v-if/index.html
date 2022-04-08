@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+
+    <title>Execicio</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>Blusa Regata: {{ estoqueBlusa }}</p>
+      <p>Seu carrinho tem {{ carrinho }} itens</p>
+      <button  v-show="estoqueBlusa" @click="adicionar">
+        Adicionar Produto
+      </button>
+      <button  v-show="carrinho" @click="remover">Remover Produto</button>
+      <p v-show="estoqueBlusa === 0">
+        Não é possível adicionar mais itens ao carrinho
+      </p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          estoqueBlusa: 7,
+          carrinho: 0,
+          produto: "",
+        },
+        methods: {
+          adicionar() {
+            if (this.estoqueBlusa > 0) {
+              this.carrinho++;
+              this.estoqueBlusa--;
+            }
+          },
+          remover() {
+            this.carrinho--;
+            this.estoqueBlusa++;
+          },
+          nomeProduto() {
+            this.nomeProduto = produto;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
+
+<!-- 
+Simule a adição de um produto no carrinho
+esse produto tem 7 unidades no estoque
+ao atingir 7 itens mostre uma mensagem
+dizendo que não é possível adicionar mais
+que 7 itens ao carrinho
+Remova também o botão de adicionar itens -->

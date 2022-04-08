@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+
+    <title>V-on</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="contador++">Aqui adiciona coisa hein</button>
+      <p>{{ contador }}</p>
+      <button @click="ativo = !ativo">Toggle</button>
+      <p>{{ ativo }}</p>
+      <p v-if="ativo">Mostra o texto</p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {
+            contador: 0,
+            ativo: true
+          };
+        },
+        methods: {
+          handleClick(event) {
+            console.log(event);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

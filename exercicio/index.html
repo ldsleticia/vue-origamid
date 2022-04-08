@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+    <title>Execicio</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ acoes }}
+      <p>Latest Time: {{acoes.latestTime}}</p>
+      <p>Latest Price: {{acoes.latestTime}}</p>
+      <p>Company Name: {{acoes.latestTime}}</p>
+      <button @click="puxarAcoes()"></button>
+    </div>
+    <script>
+      const vm = new Vue({
+          el: '#app',
+          data: {
+              acoes: {},
+          },
+          methods: {
+              puxarAcoes() {
+                  fetch('https://cloud.iexapis.com/stable/stock/aapl/quote?token=TOKENAQUI')
+                  .then(response => response.json())
+                  .then(json => {
+                    this.acoes = json
+                  })
+              }
+          }
+      })
+    </script>
+  </body>
+</html>
