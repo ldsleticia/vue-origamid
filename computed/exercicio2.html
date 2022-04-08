@@ -1,0 +1,53 @@
+<!-- Utilize a rest API https://restcountries.eu/rest/v2/all
+para puxar as capitais dos países. Use um campo de select onde 
+o usuário possa selecionar o país
+Com a função watch mude a capital de acordo 
+com o país selecionado 
+
+API deixou de ser aberta, exercício feito de acordo com a aula-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+    <title>Execicio 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="puxarPaises">Puxar</button>
+      <select name="paises" id="paises" v-model="paisSelecionado">
+        <option v-for="pais in paises" :value="pais.name">
+          {{ pais.name }}
+        </option>
+      </select>
+      <p>{{ capital.capital }}</p>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          paisSelecionado: "",
+          capital: '',
+          paises: {},
+        },
+        methods: {
+          puxarPaises() {
+            const paises = fetch("https://api.countrylayer.com/v2/all");
+            paises
+              .then((response) => response.json)
+              .then((result) => (result = this.paises = result));
+          },
+          watch: {
+              paisSelecionado(valor){
+                this.capital =this.pais.find((pais) => pais.name === valor)
+              }
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
