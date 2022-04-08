@@ -10,7 +10,9 @@
   <body>
     <div id="app">
       <div>
-        <p>{{ total }} </p>
+        <ul>
+          <li v-for="carro in carrosAzuis"> {{ carro.marca }}</li>
+        </ul>
       </div>
     </div>
 
@@ -18,14 +20,27 @@
       const vm = new Vue({
         el: "#app",
         data: {
-          preco: 59,
-          desconto: 10,
+          carros:[
+            {
+              marca: 'VW',
+              cor: 'Azul',
+            },
+            {
+              marca: 'Ford',
+              cor: 'Preto',
+            },
+            {
+              marca: 'Tesla',
+              cor: 'Azul',
+            },
+          ],
         },
         methods: {
         },
         computed:{
-          total() {
-            return `R$ ${this.preco - this.desconto}`
+          carrosAzuis() {
+            const filtro = this.carros.filter(({cor}) => cor === 'Azul')
+            return filtro
           }
         }
       });
