@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../vue.js"></script>
+
+    <title>v-model exercício</title>
+</head>
+
+<body>
+    <div id="app">
+        <label for="width">Width</label>
+        <input type="text" id="width" v-model="estiloBotao.width" />
+
+        <label for="heigth">Heigth</label>
+        <input type="text" id="heigth" v-model="estiloBotao.heigth" />
+
+        <label for="fontSize">Font Size</label>
+        <input type="text" id="fontSize" v-model="estiloBotao.fontSize" />
+
+        <label for="fontFamily">Font Family</label>
+        <input type="text" id="fontFamily" v-model="estiloBotao.fontFamily" />
+
+        <label for="textAlign">Text Align</label>
+        <input type="text" id="textAlign" v-model="estiloBotao.textAlign" />
+
+        <label for="background">Background</label>
+        <input type="text" id="background" v-model="estiloBotao.background">
+
+        <label for="color">Color</label>
+        <input type="text" id="color" v-model="estiloBotao.color" />
+
+        <label for="borderRadius">Border Radius</label>
+        <input type="text" id="borderRadius" v-model="estiloBotao.borderRadius" />
+
+        <p :style="estiloBotao">Oxe</p>
+        <a :style="estiloBotao" href="">Clique aqui</a>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                estiloBotao: {
+                    width: "",
+                    heigth: "",
+                    fontSize: "20px",
+                    fontFamily: "Arial",
+                    textAlign: "",
+                    background: "",
+                    color: "",
+                    borderRadius: "0%",
+                },
+            },
+        });
+    </script>
+
+    <style>
+        label {
+            display: block;
+            padding-top: 10px;
+        }
+
+        a {
+            margin-top: 100px;
+            display: block;
+        }
+    </style>
+</body>
+
+</html>
+
+
+<!-- Crie um criador de botões
+O usuário poderá definir:
+width, 
+heigth,
+font-size,
+font-family,
+text-align,
+background,
+color,
+border-radius
+
+As escolhas devem ser feitas no campo de formulário
+e cada escolha deverá refletir no botão->

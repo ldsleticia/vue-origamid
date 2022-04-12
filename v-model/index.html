@@ -10,13 +10,13 @@
   </head>
   <body>
     <div id="app">
-        <input v-model="nome">
-        <textarea v-model="mensagem"></textarea>
-        <p>{{ nome }}</p>
-        <p>{{ mensagem }}</p>
-        <input type="text" v-model.number="ano">
-        <textarea v-model.lazy="nome"></textarea>
-        <p>{{ ano }}</p>
+      <input v-model="nome" />
+      <textarea v-model="mensagem"></textarea>
+      <p>{{ nome }}</p>
+      <p>{{ mensagem }}</p>
+      <input type="text" v-model.number="ano" />
+      <textarea v-model.lazy="nome"></textarea>
+      <p>{{ ano }}</p>
     </div>
     <script>
       const vm = new Vue({
@@ -24,7 +24,7 @@
         data: {
           nome: "",
           mensagem: "",
-          ano: 0
+          ano: 0,
         },
       });
     </script>
